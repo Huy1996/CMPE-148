@@ -34,7 +34,7 @@ def main():
     if recv[:3] != '220':
         print('220 reply not received from server.')
 
- #Fill in end
+    #Fill in end
 
 # Send HELO command and print server response.
     heloCommand = 'HELO Alice\r\n'
@@ -54,27 +54,34 @@ def main():
     print(recv_auth.decode())
 
 # Send MAIL FROM command and print server response.
+    #Fill in start
     mailFrom = "MAIL FROM:<{}>\r\n".format(username)
     clientSocket.send(mailFrom.encode())
     recv2 = clientSocket.recv(1024)
     recv2 = recv2.decode()
     print("Server respond to MAIL FROM: "+recv2)
+    #Fill in end
 
 # Send RCPT TO command and print server response.
+    #Fill in start
     rcptTo = "RCPT TO:<{}>\r\n".format(email_to)
     clientSocket.send(rcptTo.encode())
     recv3 = clientSocket.recv(1024)
     recv3 = recv3.decode()
     print("Server respond to RCPT TO: "+recv3)
+    #Fill in end
 
 # Send DATA command and print server response.
+    #Fill in start
     data = "DATA\r\n"
     clientSocket.send(data.encode())
     recv4 = clientSocket.recv(1024)
     recv4 = recv4.decode()
     print("Server respond to DATA: "+recv4)
+    #Fill in end
 
     # Send message data.
+    #Fill in start
     # Message ends with a single period.
     subject = "Subject: testing my client\r\n\r\n"
     clientSocket.send(subject.encode())
@@ -86,13 +93,16 @@ def main():
     clientSocket.send(endmsg.encode())
     recv_msg = clientSocket.recv(1024)
     print("Response after sending message body:"+recv_msg.decode())
+    #Fill in end
 
 # Send QUIT command and get server response.
+    #Fill in start
     quit = "QUIT\r\n"
     clientSocket.send(quit.encode())
     recv5 = clientSocket.recv(1024)
     print(recv5.decode())
     clientSocket.close()
+    #Fill in end
 
 if __name__ == '__main__':
      main()
